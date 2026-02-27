@@ -1,26 +1,33 @@
+/* app/global.css */
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Theme Palette (Dark) */
+  --background: #0f1423; /* Dark slate background */
+  --foreground: #ffffff; /* White text for contrast */
+
+  --brand-primary: #00c2ff; /* Cyan */
+  --brand-secondary: #a652ff; /* Purple */
+  --brand-dark: #0f1423; /* Logo background color */
 }
 
 @theme inline {
+  /* Core variables */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+
+  /* Brand custom colors */
+  --color-brand-primary: var(--brand-primary);
+  --color-brand-secondary: var(--brand-secondary);
+  --color-brand-dark: var(--brand-dark);
+
+  /* Fonts */
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans), Arial, sans-serif;
 }
