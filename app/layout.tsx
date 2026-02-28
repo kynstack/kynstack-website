@@ -1,15 +1,19 @@
 // app/layout.tsx
+// app/layout.tsx
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Outfit, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+// Outfit is a geometric, modern sans-serif that perfectly matches your logo's vibe
+const fontSans = Outfit({
+  variable: "--font-sans",
   subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700", "800", "900"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+// JetBrains Mono adds a great "developer/tech" feel to small accents
+const fontMono = JetBrains_Mono({
+  variable: "--font-mono",
   subsets: ["latin"],
 });
 
@@ -24,7 +28,6 @@ export const metadata: Metadata = {
     "AI Integration",
     "Tech Solutions",
   ],
-
   icons: {
     icon: [
       { url: "/favicon-96x96.png", sizes: "92x92", type: "image/png" },
@@ -45,7 +48,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${fontSans.variable} ${fontMono.variable} antialiased font-sans`}
       >
         {children}
       </body>
