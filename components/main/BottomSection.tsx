@@ -1,4 +1,4 @@
-// components/BottomSection.tsx
+// components/main/BottomSection.tsx
 "use client";
 
 import { useState, useEffect } from "react";

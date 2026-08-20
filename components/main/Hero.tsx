@@ -1,4 +1,4 @@
-// components/Hero.tsx
+// components/main/Hero.tsx
 "use client";
 
 import dynamic from "next/dynamic";

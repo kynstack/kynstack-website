@@ -1,4 +1,4 @@
-// components/ThreeScene.tsx
+// components/main/ThreeScene.tsx
 "use client";
 
 import { Suspense, useRef, useMemo } from "react";

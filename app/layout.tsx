@@ -1,17 +1,15 @@
 // app/layout.tsx
-// app/layout.tsx
+
 import type { Metadata } from "next";
 import { Outfit, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
-// Outfit is a geometric, modern sans-serif that perfectly matches your logo's vibe
 const fontSans = Outfit({
   variable: "--font-sans",
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700", "800", "900"],
 });
 
-// JetBrains Mono adds a great "developer/tech" feel to small accents
 const fontMono = JetBrains_Mono({
   variable: "--font-mono",
   subsets: ["latin"],
