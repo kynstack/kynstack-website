@@ -30,3 +30,11 @@ body {
   color: var(--color-foreground);
   font-family: var(--font-sans), sans-serif;
 }
+
+.ecosystem-grid {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: linear-gradient(to bottom, transparent, black 18%, black 82%, transparent);
+}
