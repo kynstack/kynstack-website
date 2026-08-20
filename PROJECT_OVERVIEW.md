@@ -2,8 +2,8 @@
 
 Last analyzed: August 20, 2026
 
-Repository: `kynstack/kynstack-website`  
-Local project path: `D:\kynstack-website`  
+Repository: `kynstack/kynstack-website`
+Local project path: `D:\kynstack-website`
 Default branch: `main`
 
 ---
@@ -48,29 +48,24 @@ If local `HEAD`, uncommitted files, or `origin/main` differ from the checkpoint 
 
 # 2. Current Development Checkpoint
 
-Remote state inspected: August 20, 2026
+Current local feature work finalized for commit: August 20, 2026
 
 - Repository: `https://github.com/kynstack/kynstack-website`
 - Visibility at inspection time: public
 - Default branch: `main`
-- Remote `main` HEAD:
-  `fd729079b6102bf33af0a410f397293a8c997d4d`
-- HEAD commit message:
-  `feat: expand homepage modules and refine hero experience`
-- HEAD commit pushed:
-  August 20, 2026
-- Parent commit:
-  `35fa762d23a19a966bd102437d7df19691068f93`
-  (`Page site under construction indicator added`)
-- Commit scope: 6 files changed, 247 insertions, 7 deletions; `components/main/ModulesSection.tsx` was added.
-- Important integration state: `ModulesSection.tsx` exists in source but is **not imported or rendered by `app/page.tsx`**, so it is not visible on the homepage yet.
-- No `PROJECT_OVERVIEW.md` existed in the inspected remote tree before this overview was created.
-- No GitHub Actions workflow was present in the inspected repository tree.
-- The repository is currently a **small frontend-only Next.js website**.
-- The currently rendered public experience is primarily a **single branded landing/launch page**.
-- A new interactive `ModulesSection` component has been authored for the next homepage section, but it is currently dormant because `app/page.tsx` does not mount it.
-- The rendered page therefore still contains the visible **"System Expanding" / under-construction section** after the hero.
-- The website is **not yet a complete multi-page KYNSTACK corporate site**.
+- Base remote/documentation commit before the current feature work:
+  `abe827ed0854aba6a478ecadceba54d32541e0b9`
+  (`docs: add KYNSTACK website project overview`)
+- Current implementation commit after finalization:
+  `eb17a1504e1494389cf5cb574f237cd80320bf84`
+- `ModulesSection` is imported and rendered directly after the hero island.
+- The temporary **"System Expanding"** placeholder has been removed from `app/page.tsx`.
+- The KYNSTACK splash now uses the real logo with the slogan **"One Stack. Infinite Solutions."**
+- Splash timing is shortened to about **1.9 seconds** with a minimal entrance and short fade/scale/blur exit.
+- The current ecosystem interaction is implemented and functional, but its visual direction is **not considered final yet** and may be redesigned later.
+- **AI & Automation** should remain prominent in future KYNSTACK website messaging, without falsely presenting every product as AI-powered.
+- No GitHub Actions workflow is currently present.
+- The repository remains a frontend-only Next.js website and is not yet a complete multi-page corporate site.
 
 ### Current implementation status
 
@@ -84,17 +79,11 @@ Implemented and currently rendered:
 - Large `BUILD / SCALE` hero typography.
 - Interactive animated Three.js hero object.
 - Auto-rotating services capability carousel.
-- Under-construction / future-sections placeholder.
+- Interactive **The KYNSTACK Ecosystem** section.
+- Three selectable ecosystem pillars: Products, Custom Engineering, and Technology & Deployment.
+- Animated active-pillar content with reduced-motion handling.
 - Basic site metadata, icons and web manifest wiring.
 - Responsive Tailwind-based styling.
-
-Implemented in source but **not currently rendered/wired**:
-
-- `components/main/ModulesSection.tsx` — interactive KYNSTACK modules/capabilities section.
-- Module selector with statuses: `LIVE`, `DEPLOYING`, and `R&D`.
-- Module categories: SaaS Products, Custom Development, IT & Digital Services, and AI Integration.
-- Framer Motion transitions between module detail cards.
-- `Explore Modules` and `Talk to Kynstack` visual CTA buttons; these buttons currently have no navigation or click behavior.
 
 Not implemented or not functional yet:
 
@@ -127,9 +116,7 @@ The home route combines five main ideas:
 2. A premium dark hero container.
 3. KYNSTACK navigation and logo.
 4. A Three.js/WebGL visual centerpiece behind the `BUILD` and `SCALE` positioning.
-5. A lower "System Expanding" area communicating that more website modules are still being built.
-
-A more complete `ModulesSection` has now been created in source, but because it is not mounted in `app/page.tsx`, it does not currently replace or appear alongside the construction area.
+5. A real post-hero ecosystem section explaining KYNSTACK through Products, Custom Engineering, and Technology & Deployment.
 
 The current marketing positioning visible in the source focuses on:
 
@@ -177,9 +164,9 @@ There is no separate `tailwind.config.*` file in the current tree. Tailwind 4 is
 
 Used for:
 
-- splash screen animation,
-- construction indicator animation,
-- loading/progress effects.
+- KYNSTACK splash transitions,
+- KYNSTACK Ecosystem pillar/workspace transitions,
+- focused interface motion and state changes.
 
 ## 3D / WebGL
 
@@ -240,13 +227,16 @@ Production start after a successful build:
 npm run start
 ```
 
-### Validation status of this overview
+### Validation status of the current implementation
 
-The August 20, 2026 overview was created from remote source inspection.
+Latest known validation during the August 20, 2026 ecosystem/splash work:
 
-A fresh `npm run lint` and `npm run build` were **not executed against the user's Windows worktree as part of this inspection**.
+- `npm run build` — passed successfully after the splash redesign, including TypeScript and static prerendering.
+- `git diff --check` — passed for the edited feature scope.
+- The latest full `npm run lint` reported existing findings in `components/main/ThreeScene.tsx` around render-time `Math.random()`, two `@ts-ignore` directives, and an unused-variable warning. `SplashScreen.tsx` itself passed ESLint independently.
+- Local development returned HTTP 200 for `/`.
+- Manual browser inspection has started, but the ecosystem section's current visual design is not locked as final and broader multi-viewport QA remains pending.
 
-Do not record either command as passing until it is actually run on the current local state.
 
 ---
 
@@ -310,9 +300,9 @@ File:
 app/page.tsx
 ```
 
-This is the only application page route found in the inspected remote tree.
+This is the only application page route in the current tree.
 
-It is a client component because the under-construction area uses Framer Motion.
+It remains a client component and owns the homepage composition.
 
 Composition:
 
@@ -324,10 +314,8 @@ Home
 │  ├─ Hero
 │  │  └─ ThreeScene
 │  └─ BottomSection
-└─ System Expanding placeholder
+└─ ModulesSection
 ```
-
-`ModulesSection.tsx` is **not** part of this rendered composition yet. It exists under `components/main/` but has no import/use in `app/page.tsx`.
 
 ## Referenced but missing route
 
@@ -423,22 +411,12 @@ white page background
       ├─ navbar
       ├─ hero
       └─ bottom services section
-└─ white future-content section
-   └─ "System Expanding"
+└─ dark KYNSTACK Ecosystem section
+   ├─ three-pillar selector rail
+   └─ animated active-pillar workspace
 ```
 
-The latest inspected commit specifically added the current under-construction area.
-
-Current message shown to visitors:
-
-```text
-System Expanding
-
-We are currently deploying the next modules of our digital powerhouse.
-Stay tuned for the full experience.
-```
-
-This is a temporary holding state, not intended to be confused with completed site content.
+`app/page.tsx` imports and mounts `ModulesSection` immediately after the hero wrapper. The previous under-construction placeholder and its continuous progress animation no longer exist.
 
 ---
 
@@ -674,7 +652,7 @@ The carousel uses custom relative-position calculations rather than an external 
 
 ---
 
-# 14. Modules Section — Authored but Not Mounted
+# 14. Modules Section — Mounted KYNSTACK Ecosystem
 
 File:
 
@@ -684,64 +662,56 @@ components/main/ModulesSection.tsx
 
 Current status:
 
-**Implemented as a component, committed to `main`, but not rendered by the homepage.**
+**Implemented and rendered immediately after the homepage hero.**
 
-The component defines a dark interactive KYNSTACK capability section headed:
-
-```text
-Kynstack OS
-One company. Many modules.
-```
-
-It presents four selectable modules:
-
-1. **SaaS Products** — status `DEPLOYING`
-   - Inventory & Ops
-   - CRM & Sales Flow
-   - Hospital / Hotel Systems
-   - Restaurant & POS
-2. **Custom Development** — status `LIVE`
-   - Next.js / React Apps
-   - Mobile Apps
-   - APIs & Integrations
-   - Dashboards & Admins
-3. **IT & Digital Services** — status `LIVE`
-   - Branding & Design
-   - Digital Marketing
-   - Cloud & Hosting
-   - IT Setup & Support
-4. **AI Integration** — status `R&D`
-   - AI Chatbot for Support
-   - Internal Copilot
-   - Process Automation
-   - Smart Search & Insights
-
-Interaction model:
-
-- default active index is `1`, so **Custom Development** is initially selected,
-- clicking the left module list changes the active detail card,
-- `useMemo` resolves the active module,
-- `AnimatePresence` and Framer Motion animate transitions,
-- status pills use cyan/purple/neutral ring and glow treatments.
-
-The component contains two CTA buttons:
+The section is publicly headed:
 
 ```text
-Explore Modules
-Talk to Kynstack
+THE KYNSTACK ECOSYSTEM
+One company. Multiple ways to build.
 ```
 
-These are currently plain `<button>` elements with no click handler, link, or navigation behavior. Even after the section is mounted, those CTAs should not be treated as functional until they are explicitly wired.
+It explains the company through three selectable pillars:
 
-### Required wiring before calling this feature live
+1. **Products** — ready-made KYNSTACK business software.
+   - KYNMENU
+   - KYNSTAY
+   - KYNMED
+   - KYNFLOW
+   - KYNBILL
+2. **Custom Engineering** — software built around customer workflows.
+   - Web and mobile applications
+   - Windows/desktop software
+   - SaaS platforms
+   - Dashboards and portals
+   - APIs, integrations, and automation
+   - Existing-software modernization and maintenance
+3. **Technology & Deployment** — practical implementation support around the software.
+   - Thermal, Bluetooth, and LAN printers
+   - Barcode scanners and relevant POS hardware
+   - Device configuration and printer routing
+   - Deployment-related local-network setup
+   - Software installation and configuration
+   - Remote support
+   - Scoped on-site deployment
 
-Decide whether this section should replace the `System Expanding` placeholder or appear before it, then import and render it from `app/page.tsx`, for example conceptually:
+Interaction and design model:
 
-```tsx
-import ModulesSection from "@/components/main/ModulesSection";
-```
+- Products is selected by default.
+- Three semantic selector buttons expose clear active, hover, tap, and focus-visible states.
+- The selected pillar updates a single shared system-workspace panel instead of rendering three generic cards.
+- `AnimatePresence` and Framer Motion animate the active workspace and capability rows.
+- `useReducedMotion` removes optional transition movement for visitors who prefer reduced motion.
+- Cyan, purple, and blended accents distinguish the active layers without continuous animation.
+- The selector and detail layout adapt from a three-column desktop rail to an intentional mobile stack; capability rows move from two columns to one.
+- The deployment copy explicitly scopes on-site work by location, hardware, and project requirements.
+- The previous dead `Explore Modules` and `Talk to Kynstack` buttons were removed rather than presented as functional CTAs.
 
-and mount `<ModulesSection />` in the intended position. Validate styling because the component is designed for a dark background while the current post-hero area is white.
+Component ownership:
+
+- `components/main/ModulesSection.tsx` owns ecosystem content, pillar selection, active-panel motion, and the section's responsive layout.
+- `app/page.tsx` owns mounting and section order.
+- `app/globals.css` owns the reusable technical grid background used by this section.
 
 ---
 
@@ -753,34 +723,41 @@ File:
 components/ui/SplashScreen.tsx
 ```
 
-The splash screen is shown on initial component mount.
+The splash screen is shown on initial component mount and is intentionally brief.
 
 Current duration before dismissal:
 
 ```text
-3200 ms
+~1900 ms
 ```
 
-It animates:
+Current visual treatment:
 
-- a custom SVG `K`,
-- cyan/purple gradient drawing,
-- `Kynstack` wordmark,
-- `The Next Generation Powerhouse` slogan,
-- loading bar,
-- blur/scale fade exit.
+- real `/KynstackWhite.png` logo,
+- very dark navy/black background,
+- subtle cyan radial glow from the top-left,
+- subtle purple radial glow from the bottom-right,
+- minimal logo entrance motion,
+- slogan entrance after the logo,
+- short fade/scale/blur exit.
+
+Current slogan:
+
+```text
+One Stack. Infinite Solutions.
+```
+
+The previous custom SVG `K` drawing, recreated animated wordmark, shimmer treatment, capability list, and loading/progress bar are no longer part of the splash.
 
 It uses:
 
+- Next.js `Image`,
 - React state/effect,
 - Framer Motion,
 - `AnimatePresence`.
 
-### UX caution
+The splash should remain a short KYNSTACK brand moment rather than a long blocking animation.
 
-A forced 3.2-second splash is visually intentional but delays access to page content on every fresh mount.
-
-If conversion, SEO experience, accessibility or perceived performance becomes a priority, this behavior should be reassessed rather than automatically preserved.
 
 ---
 
@@ -1048,14 +1025,6 @@ These are inspection notes, not claims that the current implementation fails acc
 
 Treat this section as the immediate technical backlog until items are fixed or intentionally rejected.
 
-## P0 — New Modules section is not mounted
-
-`components/main/ModulesSection.tsx` was added in commit `fd729079b6102bf33af0a410f397293a8c997d4d`, but `app/page.tsx` still imports only `Navbar`, `Hero`, `BottomSection`, and `SplashScreen`.
-
-Result: the new module UI is not visible. The homepage still renders the older `System Expanding` placeholder after the hero.
-
-The `Explore Modules` and `Talk to Kynstack` buttons inside `ModulesSection.tsx` also have no behavior yet.
-
 ## P0 — Broken or misleading navigation
 
 1. `Home`, `Services`, `About`, and `Contact` all currently use `href="#"`.
@@ -1064,9 +1033,13 @@ The `Explore Modules` and `Talk to Kynstack` buttons inside `ModulesSection.tsx`
 
 ## P1 — Website content is unfinished
 
-The rendered site currently stops after the hero and the `System Expanding` placeholder. A richer modules component exists in source but is not yet integrated.
+The rendered site currently stops after the hero and the integrated KYNSTACK Ecosystem section.
 
-Core company-site content still needs to be designed and implemented.
+Core company-site content still needs to be designed and implemented, including deeper product/service content, company proof, conversion content, contact, and a footer.
+
+## P1 — Responsive visual QA remains pending
+
+The ecosystem section has responsive source-level behavior and passed lint/build, but automated browser viewport inspection was unavailable during the implementation session. Confirm large desktop, laptop, tablet, and narrow-mobile presentation in a browser before release.
 
 ## P1 — Manifest identity is placeholder content
 
@@ -1099,17 +1072,14 @@ No tests or repository CI workflow were found.
 
 The Three.js hero is intentionally optimized in several places, but it remains one of the highest-risk components for low-end mobile performance.
 
-## P2 — Splash screen delays content
+## P2 — Splash timing / brand experience
 
-The splash screen waits 3.2 seconds before disappearing.
+The original 3.2-second splash has been replaced by a shorter ~1.9-second brand moment using the real KYNSTACK logo and the slogan `One Stack. Infinite Solutions.` Reassess timing only if later performance, accessibility, or conversion testing gives a reason to change it.
 
-Keep only if this is an intentional brand experience that is worth the conversion/performance cost.
+## P1 — ESLint cleanup pending
 
-## P2 — Source cleanup candidates
+The production build succeeds, but the latest full `npm run lint` reports findings in `components/main/ThreeScene.tsx` around render-time `Math.random()`, two `@ts-ignore` directives, and an unused-variable warning. These are outside the ecosystem/splash feature scope and should be cleaned up before a later production release checkpoint.
 
-`ThreeScene.tsx` includes implementation details such as a mesh ref array that is populated but does not currently drive visible behavior, and an unused `state` parameter in `useFrame`.
-
-These should be inspected during a lint/build cleanup rather than blindly deleted.
 
 ---
 
@@ -1264,12 +1234,12 @@ Do not wire a fake submit action.
 
 Unless business priorities change, the cleanest path from the current state is:
 
-### Phase 1 — Finish the currently committed homepage module work
+### Phase 1 — Browser QA the ecosystem section
 
-- Decide the intended placement/background for `ModulesSection`.
-- Import and mount it from `app/page.tsx`.
-- Wire or intentionally remove the `Explore Modules` and `Talk to Kynstack` CTA buttons.
-- Run lint/build and visually validate responsive behavior.
+- Inspect large desktop, laptop, tablet, and narrow-mobile viewports in a browser.
+- Verify all three pillar transitions with mouse, touch emulation, and keyboard focus.
+- Confirm there is no horizontal overflow, clipped copy, or unstable layout at intermediate widths.
+- Recheck the hero-to-ecosystem transition on representative mobile devices.
 
 ### Phase 2 — Make current navigation truthful
 
@@ -1344,7 +1314,7 @@ Once the real host is known, document:
 3. Do not assume the remote checkpoint matches the user's current local worktree.
 4. Do not treat placeholder links as implemented navigation.
 5. Do not claim `/contact` works until a real route exists and is tested.
-6. Do not call `ModulesSection` live until it is actually mounted from `app/page.tsx`; do not call its CTA buttons functional until they have real behavior.
+6. Keep `ModulesSection` mounted from `app/page.tsx`; do not add CTA controls unless they have a real destination or behavior.
 7. Preserve the KYNSTACK cyan/purple/dark visual language unless redesign is explicitly requested.
 8. Be careful when editing `ThreeScene.tsx`; hero rendering is client-only for a reason.
 9. Do not remove the `ssr: false` behavior from the Three.js dynamic import without validating browser/server behavior.
@@ -1419,43 +1389,46 @@ Update whenever ownership of a feature moves to another file/module.
 
 # 32. Current Resume Point
 
-As of the inspected remote `main` state:
+As of the current implementation checkpoint:
 
-The branded hero/launch experience remains implemented and rendered, including the splash screen, responsive navbar, Three.js `BUILD / SCALE` hero, rotating service cards and under-construction indicator.
+The branded hero remains intact with the responsive navbar, Three.js `BUILD / SCALE` hero, and rotating service cards.
 
-Commit `fd729079b6102bf33af0a410f397293a8c997d4d` additionally introduced a substantial `components/main/ModulesSection.tsx` component describing KYNSTACK's SaaS, custom development, IT/digital services and AI capabilities. The other five changed files in that commit were minor source-comment cleanup/path corrections rather than major behavior changes.
+The homepage continues into `components/main/ModulesSection.tsx`, presenting **The KYNSTACK Ecosystem** through Products, Custom Engineering, and Technology & Deployment. The previous `System Expanding` placeholder is gone.
 
-**Critical resume detail:** `ModulesSection.tsx` is not imported or rendered in `app/page.tsx`. Therefore the newly authored modules UI is currently dormant and the visible homepage still shows the old `System Expanding` placeholder. The section's `Explore Modules` and `Talk to Kynstack` buttons also have no behavior.
+The ecosystem interaction is implemented and functional, but its current visual treatment is **not locked as final**. Future website work may redesign/polish this section before production release.
 
-The immediate logical next task is to finish that integration and validate it before moving on to the larger company site.
+The splash is now a short KYNSTACK brand moment using the real KYNSTACK logo, subtle cyan/purple lighting, the slogan **One Stack. Infinite Solutions.**, and an approximately 1.9-second automatic dismissal.
 
-After that, major unfinished work includes:
+Future public messaging should keep **AI & Automation** visible as a major KYNSTACK capability while avoiding unsupported AI claims for products that do not actually contain AI functionality.
 
+Latest known validation:
+
+- `npm run build` passed.
+- `git diff --check` passed for the feature scope.
+- The latest full `npm run lint` reports existing `ThreeScene.tsx` findings described in this overview.
+- Broader visual redesign and final multi-viewport QA remain pending.
+
+Major unfinished work includes:
+
+- final visual direction/polish for the ecosystem section,
 - real navigation destinations,
 - Contact route,
-- full company/service/product content,
+- full Products section and product detail presentation,
+- Hardware catalogue / WhatsApp ordering experience,
+- custom services/company/proof sections,
 - real conversion/contact workflow,
 - footer,
 - SEO completion,
-- production validation and deployment documentation.
+- final responsive/performance QA and deployment documentation.
 
-Remote checkpoint:
+Current implementation checkpoint:
 
 ```text
 branch: main
-HEAD: fd729079b6102bf33af0a410f397293a8c997d4d
-commit: feat: expand homepage modules and refine hero experience
+implementation commit: eb17a1504e1494389cf5cb574f237cd80320bf84
+message: feat: add ecosystem section and refine splash experience
 ```
 
-Local status immediately after the user pushed this code commit:
-
-```text
-?? PROJECT_OVERVIEW.md
-```
-
-That means the website source commit was pushed successfully and the overview remained the only untracked local file at that point.
-
-Always verify the local Windows worktree before using this SHA as the active development base.
 
 ---
 
@@ -1463,10 +1436,14 @@ Always verify the local Windows worktree before using this SHA as the active dev
 
 KYNSTACK Website is a Next.js 16 / React 19 / TypeScript / Tailwind 4 frontend in `D:\kynstack-website`.
 
-Remote `main` checkpoint `fd729079b6102bf33af0a410f397293a8c997d4d` contains the branded launch homepage plus a newly authored `ModulesSection.tsx`. The rendered home page still has a 3.2-second Framer Motion splash, dark rounded hero island, responsive navbar, large BUILD/SCALE typography, dynamically client-loaded React Three Fiber/Three.js burst object, auto-rotating service carousel, and the white `System Expanding` placeholder below it.
+Current implementation commit `eb17a1504e1494389cf5cb574f237cd80320bf84` contains the mounted KYNSTACK Ecosystem section and the refined splash experience. The homepage keeps the existing dark rounded hero, responsive navbar, large BUILD/SCALE typography, dynamically client-loaded React Three Fiber/Three.js object, and auto-rotating service carousel.
 
-`ModulesSection.tsx` defines an interactive dark capability area for SaaS Products (`DEPLOYING`), Custom Development (`LIVE`), IT & Digital Services (`LIVE`), and AI Integration (`R&D`), with animated detail switching. However, it is **not imported/rendered by `app/page.tsx` yet**, so it is not visible. Its `Explore Modules` and `Talk to Kynstack` buttons are also unwired.
+`ModulesSection.tsx` is mounted directly after the hero and explains KYNSTACK through Products (KYNMENU, KYNSTAY, KYNMED, KYNFLOW, KYNBILL), Custom Engineering, and Technology & Deployment. Its functional interaction is implemented, but the current visual treatment is not considered final and may be redesigned.
 
-The navbar's Home/Services/About/Contact links are still `#`; the Book a Call CTA points to `/contact`, but no contact route exists. There is no backend, contact form, API, auth, DB, analytics, CMS, CI or test suite in the current repository. Basic metadata exists, but the manifest is still generic and one favicon reference is missing.
+The splash uses the real KYNSTACK logo, a dark navy background with subtle cyan/purple radial glows, the slogan **One Stack. Infinite Solutions.**, minimal entrance motion, and an approximately 1.9-second automatic dismissal.
 
-Before future work, verify local Git state against remote main. Finish the ModulesSection integration first unless priorities explicitly change. After significant work, update this overview so it remains the source of continuity.
+KYNSTACK's future public positioning should keep **AI & Automation** prominent alongside Business Software, Custom Engineering, and Technology Solutions, but must not falsely describe non-AI products as AI-powered.
+
+The navbar's Home/Services/About/Contact links are still placeholders and the Book a Call CTA points to `/contact` even though that route does not exist yet. There is still no backend, contact form, API, auth, DB, analytics, CMS, CI or test suite in this repository. Basic metadata exists, but manifest/favicon cleanup remains pending.
+
+Before future work, verify local Git state against remote `main`. After significant work, update this overview so it remains the continuity source.
